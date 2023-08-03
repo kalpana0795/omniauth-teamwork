@@ -15,4 +15,7 @@ Gem::Specification.new do |gem|
   gem.version        = OmniAuth::Teamwork::VERSION
 
   gem.add_runtime_dependency 'omniauth-oauth2', '>= 1.2', '< 3'
+
+  gem.add_development_dependency 'rspec', '~> 3.12'
+  gem.add_development_dependency 'rake', '~> 13.0'
 end

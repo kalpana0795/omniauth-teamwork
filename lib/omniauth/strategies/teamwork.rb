@@ -13,20 +13,24 @@ module OmniAuth
         token_url: 'https://www.teamwork.com/launchpad/v1/token'
       }
 
-      uid { raw_info.id }
+      uid { raw_info['id'] }
 
       info do
         {
-          email: raw_info.email_address,
-          first_name: raw_info.first_name,
-          last_name: raw_info.last_name,
-          avatar_rl: raw_info.avatar_url
+          email: raw_info['email_address'],
+          first_name: raw_info['first_name'],
+          last_name: raw_info['last_name'],
+          avatar_url: raw_info['avatar_url']
         }
       end
 
       credentials { { token: access_token.token } }
 
       extra { { raw_info: raw_info } }
+
+      def callback_url
+        options[:redirect_uri] || (full_host + script_name + callback_path)
+      end
 
       def raw_info
         url = "#{access_token.response.parsed.installation.api_end_point}me.json"
