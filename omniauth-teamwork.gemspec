@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.summary        = 'Unofficial OmniAuth strategy for Teamwork.'
   gem.description    = 'Unofficial OmniAuth strategy for Teamwork.'
   gem.authors        = ['Kalpana']
-  gem.homepage       = ''
+  gem.homepage       = 'https://github.com/kalpana0795/omniauth-teamwork'
   gem.license        = 'MIT'
 
   gem.files          = `git ls-files`.split("\n")
