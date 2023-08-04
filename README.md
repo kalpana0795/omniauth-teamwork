@@ -1,5 +1,4 @@
-# OmniAuth Teamwork &nbsp;![Build Status](https://github.com/kalpana0795/omniauth-teamwork/actions/workflows/ci.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/omniauth-teamwork.svg)](https://rubygems.org/gems/omniauth-teamwork)
-
+# OmniAuth Teamwork &nbsp;![Build Status](https://github.com/kalpana0795/omniauth-teamwork/actions/workflows/ci.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/omniauth-teamwork.svg)](https://rubygems.org/gems/omniauth-teamwork) 
 This gem contains the Teamwork strategy for OmniAuth.
 
 ## Installing
@@ -21,3 +20,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :teamwork, ENV['TEAMWORK_CLIENT_ID'], ENV['TEAMWORK_CLIENT_SECRET']
 end
 ```
+
+## License
+Copyright (c) 2023 Kalpana, Inc. See [LICENSE](https://github.com/kalpana0795/omniauth-teamwork/blob/main/LICENSE.md) for details.
