@@ -47,9 +47,7 @@ module OmniAuth
 
       def location
         address = raw_info['address']
-        return '' unless address['city'].present? || address['state'].present?
-
-        "#{address['city']}, #{address['state']}"
+        [address['city'], address['state']].join(' ').strip
       end
     end
   end
