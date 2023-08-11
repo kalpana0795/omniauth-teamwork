@@ -16,10 +16,18 @@ module OmniAuth
       uid { raw_info['id'] }
 
       info do
+        warn('DEPRECATION WARNING: avatar_url is deprecated and will be removed from version 2.0 (use image instead)')
+
         {
+          name: "#{raw_info['first_name']} #{raw_info['last_name']}",
           email: raw_info['email_address'],
+          nickname: raw_info['user_name'],
           first_name: raw_info['first_name'],
           last_name: raw_info['last_name'],
+          location: location,
+          description: raw_info['profile_text'],
+          image: raw_info['avatar_url'],
+          phone: raw_info['phone_number_mobile'],
           avatar_url: raw_info['avatar_url']
         }
       end
@@ -35,6 +43,11 @@ module OmniAuth
       def raw_info
         url = "#{access_token.response.parsed.installation.api_end_point}me.json"
         @raw_info ||= access_token.get(url).parsed.person
+      end
+
+      def location
+        address = raw_info['address']
+        [address['city'], address['state']].join(' ').strip
       end
     end
   end

@@ -40,16 +40,35 @@ describe OmniAuth::Strategies::Teamwork do
 
     context 'when data is present in raw info' do
       it 'returns the name' do
+        expect(subject.info[:name]).to eq("#{raw_info['first_name']} #{raw_info['last_name']}")
         expect(subject.info[:first_name]).to eq(raw_info['first_name'])
         expect(subject.info[:last_name]).to eq(raw_info['last_name'])
+        expect(subject.info[:nickname]).to eq(raw_info['user_name'])
       end
 
       it 'returns the avatar url' do
         expect(subject.info[:avatar_url]).to eq(raw_info['avatar_url'])
       end
 
-      it 'return the email' do
+      it 'returns the image' do
+        expect(subject.info[:image]).to eq(raw_info['avatar_url'])
+      end
+
+      it 'returns the email' do
         expect(subject.info[:email]).to eq(raw_info['email_address'])
+      end
+
+      it 'returns the location' do
+        location = "#{raw_info['address']['city']} #{raw_info['address']['state']}".strip
+        expect(subject.info[:location]).to eq(location)
+      end
+
+      it 'returns the description' do
+        expect(subject.info[:description]).to eq(raw_info['profile_text'])
+      end
+
+      it 'returns the phone' do
+        expect(subject.info[:phone]).to eq(raw_info['phone_number_mobile'])
       end
     end
   end
